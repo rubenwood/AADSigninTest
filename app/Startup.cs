@@ -16,6 +16,8 @@ namespace WebApp_OpenIDConnect_DotNet
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -28,8 +30,7 @@ namespace WebApp_OpenIDConnect_DotNet
         {
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowAllOrigins",
-                builder => builder.AllowAnyOrigin());
+                options.AddPolicy(name: MyAllowSpecificOrigins, builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             });
             
 
@@ -92,6 +93,9 @@ namespace WebApp_OpenIDConnect_DotNet
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            // CORS
+            app.UseCors();
 
             app.UseAuthentication();
 
