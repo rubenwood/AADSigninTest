@@ -17,7 +17,7 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
     {
         public IActionResult Index()
         {
-            Response.Headers.Add("Access-Control-Allow-Origin","*");
+            //Response.Headers.Add("Access-Control-Allow-Origin","*");
 
             using (var reader = new StreamReader(Request.Body))
             {
