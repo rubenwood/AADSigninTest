@@ -17,6 +17,7 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
         [HttpGet]
         public IActionResult SignIn()
         {
+            // get request body?
             using (var reader = new StreamReader(Request.Body))
             {
                 var body = reader.ReadToEnd();
@@ -25,6 +26,7 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
                 TempData["LoginReqBody"] = Encoding.UTF8.GetString(bytes);
             }
 
+            // get response body?
             using (var reader = new StreamReader(Response.Body))
             {
                 var body = reader.ReadToEnd();
