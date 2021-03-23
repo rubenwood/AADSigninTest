@@ -19,14 +19,14 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
         {
             //Response.Headers.Add("Access-Control-Allow-Origin","*");
 
-            using (var reader = new StreamReader(Request.Body))
-            {
-                var body = reader.ReadToEnd();
-                string logOutput = "<p>This is a test</p><br/><script>console.log(\"" + body + "\");</script>";
-                byte[] bytes = Encoding.ASCII.GetBytes(logOutput);
-                Response.Body.Write(bytes);
-            }            
-            
+            //using (var reader = new StreamReader(Request.Body))
+            //{
+            //    var body = reader.ReadToEnd();
+            //    string logOutput = "<p>This is a test</p><br/><script>console.log(\"" + body + "\");</script>";
+            //    byte[] bytes = Encoding.ASCII.GetBytes(logOutput);
+            //    Response.Body.Write(bytes);
+            //}
+
             return View();
         }
 
