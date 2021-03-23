@@ -29,6 +29,7 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
             //    ViewData["ReqBody"] = Encoding.UTF8.GetString(bytes);
             //}
 
+
             if (TempData.ContainsKey("ReqBody"))
             {
                 string reqBodyFromTemp = TempData["LoginReqBody"] as string;

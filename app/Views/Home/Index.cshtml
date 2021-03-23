@@ -6,7 +6,11 @@
 
     var testFromViewData1 = ViewData["TestVar"];
     var testFromViewData2 = ViewData["ReqBody"];
-    var testFromViewData3 = ViewData["RespBody"]; }
+    var testFromViewData3 = ViewData["RespBody"];
+
+    var postRedData1 = Context.Request.Form["id_token"];
+
+    }
 
 <br />
 <br />
@@ -91,3 +95,6 @@
 <p>@testFromViewData2</p>
 <br />
 <p>@testFromViewData3</p>
+<br />
+<br />
+<p>@postRedData1</p>
