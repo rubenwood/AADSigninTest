@@ -25,7 +25,7 @@
                     aCallback(anHttpRequest.responseText);
             }
 
-            anHttpRequest.open( "GET", aUrl, true );            
+            anHttpRequest.open("POST", aUrl, true );            
             anHttpRequest.send( null );
             }
         }
@@ -38,16 +38,15 @@
         // can get id_token from above, requires client_id & scope
         // client_id = e99ce01b-5a27-4b4b-98b8-5ffad16418f8
         // scope e1fe6dd8-ba31-4d61-89e7-88639da4683d
-
         
-        var client = new HttpClient();
-        client.get('https://login.microsoftonline.com/0721e9db-564b-4941-ac5e-2447794ec2b3/oauth2/v2.0/authorize?client_id=e99ce01b-5a27-4b4b-98b8-5ffad16418f8&scope=e1fe6dd8-ba31-4d61-89e7-88639da4683d', function(response) {
+        var client = new httpclient();
+        client.get('https://login.microsoftonline.com/0721e9db-564b-4941-ac5e-2447794ec2b3/oauth2/v2.0/authorize?client_id=e99ce01b-5a27-4b4b-98b8-5ffad16418f8&scope=openid', function(response) {
             // do something with response
             console.log(response);
-            document.getElementById("test").innerHTML = "Got response: " + response;
-            document.getElementById("test2").innerHTML = "Worked!";
+            document.getelementbyid("test").innerhtml = "got response: " + response;
+            document.getelementbyid("test2").innerhtml = "worked!";
         
-            //location.replace("immersifyeducation://immersifydental?idToken=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01xbyJ9.eyJ2ZXIiOiIyLjAiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vOTEyMjA0MGQtNmM2Ny00YzViLWIxMTItMzZhMzA0YjY2ZGFkL3YyLjAiLCJzdWIiOiJBQUFBQUFBQUFBQUFBQUFBQUFBQUFJa3pxRlZyU2FTYUZIeTc4MmJidGFRIiwiYXVkIjoiNmNiMDQwMTgtYTNmNS00NmE3LWI5OTUtOTQwYzc4ZjVhZWYzIiwiZXhwIjoxNTM2MzYxNDExLCJpYXQiOjE1MzYyNzQ3MTEsIm5iZiI6MTUzNjI3NDcxMSwibmFtZSI6IkFiZSBMaW5jb2xuIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiQWJlTGlAbWljcm9zb2Z0LmNvbSIsIm9pZCI6IjAwMDAwMDAwLTAwMDAtMDAwMC02NmYzLTMzMzJlY2E3ZWE4MSIsInRpZCI6IjkxMjIwNDBkLTZjNjctNGM1Yi1iMTEyLTM2YTMwNGI2NmRhZCIsIm5vbmNlIjoiMTIzNTIzIiwiYWlvIjoiRGYyVVZYTDFpeCFsTUNXTVNPSkJjRmF0emNHZnZGR2hqS3Y4cTVnMHg3MzJkUjVNQjVCaXN2R1FPN1lXQnlqZDhpUURMcSFlR2JJRGFreXA1bW5PcmNkcUhlWVNubHRlcFFtUnA2QUlaOGpZIn0.1AFWW-Ck5nROwSlltm7GzZvDwUkqvhSQpm55TQsmVo9Y59cLhRXpvB8n-55HCr9Z6G_31_UbeUkoz612I2j_Sm9FFShSDDjoaLQr54CreGIJvjtmS3EkK9a7SJBbcpL1MpUtlfygow39tFjY7EVNW9plWUvRrTgVk7lYLprvfzw-CIqw3gHC-T7IK_m_xkr08INERBtaecwhTeN4chPC4W3jdmw_lIxzC48YoQ0dB1L9-ImX98Egypfrlbm0IBL5spFzL6JDZIRRJOu8vecJvj1mq-IUhGt0MacxX8jdxYLP-KUu2d9MbNKpCKJuZ7p8gwTL5B7NlUdh_dmSviPWrw");
+            //location.replace("immersifyeducation://immersifydental?idtoken=eyj0exaioijkv1qilcjhbgcioijsuzi1niisimtpzci6ijfmve16ywtpaglsbgffohoyqkvkvlhlv01xbyj9.eyj2zxiioiiyljailcjpc3mioijodhrwczovl2xvz2lulm1py3jvc29mdg9ubgluzs5jb20voteymja0mgqtnmm2ny00yzvilwixmtitmzzhmza0yjy2zgfkl3yyljailcjzdwiioijbqufbqufbqufbqufbqufbqufbqufja3pxrlzyu2ftyuzietc4mmjidgfriiwiyxvkijoinmnimdqwmtgtytnmns00nme3lwi5otutotqwyzc4zjvhzwyziiwizxhwijoxntm2mzyxndexlcjpyxqioje1mzyynzq3mtesim5izii6mtuznji3ndcxmswibmftzsi6ikfizsbmaw5jb2xuiiwichjlzmvycmvkx3vzzxjuyw1lijoiqwjltglabwljcm9zb2z0lmnvbsisim9pzci6ijawmdawmdawltawmdatmdawmc02nmyzltmzmzjly2e3zwe4msisinrpzci6ijkxmjiwndbkltzjnjctngm1yi1imteyltm2ytmwngi2nmrhzcisim5vbmnlijoimtizntiziiwiywlvijoirgyyvvzytdfpecfstunxtvnpskjjrmf0emnhznzgr2hqs3y4ctvnmhg3mzjkujvnqjvcaxn2r1fpn1lxqnlqzdhpuurmcsflr2jjrgfrexa1bw5pcmnkcuhlwvnubhrlcfftuna2qulaogpzin0.1afww-ck5nrowslltm7gzzvdwukqvhsqpm55tqsmvo9y59clhrxpvb8n-55hcr9z6g_31_ubeukoz612i2j_sm9ffshsddjoalqr54cregijvjtms3ekk9a7sjbbcpl1mputlfygow39tfjy7evnw9plwuvrrtgvk7lylprvfzw-ciqw3ghc-t7ik_m_xkr08inerbtaecwhten4chpc4w3jdmw_lixzc48yoq0db1l9-imx98egypfrlbm0ibl5spfzl6jdzirrjou8vecjvj1mq-iuhgt0macxx8jdxylp-kuu2d9mbnkpckjuz7p8gwtl5b7nludh_dmsvipwrw");
         });
         
     }
