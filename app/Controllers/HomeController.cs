@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,7 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
     {
         public IActionResult Index()
         {
+            Response.Headers.Add("Access-Control-Allow-Origin","*");
             return View();
         }
 
