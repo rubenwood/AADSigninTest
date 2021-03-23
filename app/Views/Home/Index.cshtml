@@ -1,10 +1,8 @@
-﻿@{ ViewData["Title"] = "Home Page"; }
-
-<%
-        var myVar;
-        myVar = "Hello World";
-        Response.Write("<script>console.log('" & myVar & "')</script>");
-%>
+﻿@{ ViewData["Title"] = "Home Page";
+    var testVar = "This is a test!";
+    var testReqBody = Context.Request.Body;
+    var testRespBody = Context.Response.Body;
+}
 
 <br />
 <br />
@@ -18,7 +16,6 @@
 <p>
     <button onclick="redirect()">Nothing happening? Click here!</button>
 </p>
-
 
 <script>
     function redirect() {
@@ -79,7 +76,11 @@
 
     window.onload = redirect;
 </script>
-
 <p id="test2"></p>
 <p id="test"></p>
-
+<br />
+<p>@testVar</p>
+<br />
+<p>@testReqBody</p>
+<br />
+<p>@testRespBody</p>
