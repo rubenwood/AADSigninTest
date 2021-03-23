@@ -17,7 +17,7 @@ namespace WebApp_OpenIDConnect_DotNet
 {
     public class Startup
     {
-        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+        //readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         public Startup(IConfiguration configuration)
         {
@@ -37,9 +37,9 @@ namespace WebApp_OpenIDConnect_DotNet
             });
 
             // CORS
-            services.AddCors(options =>
+            services.AddCors(c =>
             {
-                options.AddPolicy(name: MyAllowSpecificOrigins, builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
             });
 
             services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
@@ -96,7 +96,7 @@ namespace WebApp_OpenIDConnect_DotNet
             app.UseCookiePolicy();
 
             // CORS
-            app.UseCors();                      
+            app.UseCors(options => options.AllowAnyOrigin());
 
             app.UseAuthentication();
 
