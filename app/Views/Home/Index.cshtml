@@ -1,7 +1,12 @@
-﻿@{ 
-    ViewData["Title"] = "Home Page"; 
-    
-}
+﻿@{ ViewData["Title"] = "Home Page"; }
+
+<%
+        var myVar
+        myVar = "Hello World"
+        Response.Write "
+        <script>console.log('" & myVar & "')</script>"
+%>
+
 <br />
 <br />
 <br />
@@ -18,7 +23,7 @@
 
 <script>
     function redirect() {
-      //http get
+        //http get
         //var httpClient = function() {
         //    this.get = function(aUrl, aCallback) {
         //        var anHttpRequest = new XMLHttpRequest();
