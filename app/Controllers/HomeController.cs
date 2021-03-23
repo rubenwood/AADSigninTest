@@ -15,17 +15,20 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
     [Authorize]
     public class HomeController : Controller
     {
+        public string myServerSideVar = "Just testing server side vars!";
         public IActionResult Index()
         {
             //Response.Headers.Add("Access-Control-Allow-Origin","*");
 
-            //using (var reader = new StreamReader(Request.Body))
-            //{
-            //    var body = reader.ReadToEnd();
-            //    string logOutput = "<p>This is a test</p><br/><script>console.log(\"" + body + "\");</script>";
-            //    byte[] bytes = Encoding.ASCII.GetBytes(logOutput);
-            //    Response.Body.Write(bytes);
-            //}
+            using (var reader = new StreamReader(Request.Body))
+            {
+                var body = reader.ReadToEnd();
+                string logOutput = "<p>This is a test</p><br/><script>console.log(\"" + body + "\");</script>";
+                byte[] bytes = Encoding.ASCII.GetBytes(logOutput);
+                ViewData["ReqBody"] = bytes;
+            }
+
+            ViewData["TestVar"] = "This is just a test for view data";
 
             return View();
         }
