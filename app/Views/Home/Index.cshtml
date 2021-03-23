@@ -10,7 +10,9 @@
 
     //var postReqData1 = Context.Request.Form["id_token"];
     var postReqData2 = Context.Request.QueryString.Value;
-    var postReqData3 = Context.Request.Headers["id_token"]; }
+    var postReqData3 = Context.Request.Headers["id_token"];
+    var idToken1 = ViewData["IDToken"];
+    }
 
 <br />
 <br />
@@ -89,12 +91,14 @@
 <br />
 <p>@testVar</p>
 <br />
-<br />
 <p>@testFromViewData1</p>
 <br />
 <p>@testFromViewData2</p>
 <br />
 <p>@testFromViewData3</p>
+<br />
+<br />
+<p>@idToken1</p>
 <br />
 <br />
 <p>@postReqData2</p>
