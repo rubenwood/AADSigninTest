@@ -17,7 +17,7 @@
 <script>
     function redirect() {
       //http get
-        var HttpClient = function() {
+        var httpClient = function() {
         this.get = function(aUrl, aCallback) {
             var anHttpRequest = new XMLHttpRequest();
             anHttpRequest.onreadystatechange = function() { 
@@ -39,7 +39,7 @@
         // client_id = e99ce01b-5a27-4b4b-98b8-5ffad16418f8
         // scope e1fe6dd8-ba31-4d61-89e7-88639da4683d
         
-        var client = new httpclient();
+        var client = new httpClient();
         client.get('https://login.microsoftonline.com/0721e9db-564b-4941-ac5e-2447794ec2b3/oauth2/v2.0/authorize?client_id=e99ce01b-5a27-4b4b-98b8-5ffad16418f8&scope=openid', function(response) {
             // do something with response
             console.log(response);
