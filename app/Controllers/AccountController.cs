@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -15,6 +17,14 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
         [HttpGet]
         public IActionResult SignIn()
         {
+            using (var reader = new StreamReader(Request.Body))
+            {
+                var body = reader.ReadToEnd();
+                //string logOutput = "<p>This is a test</p><br/><script>console.log(\"" + body + "\");</script>";
+                byte[] bytes = Encoding.ASCII.GetBytes(body);
+                TempData["LoginReqBody"] = Encoding.UTF8.GetString(bytes);
+            }
+
             var redirectUrl = Url.Action(nameof(HomeController.Index), "Home");
             return Challenge(
                 new AuthenticationProperties { RedirectUri = redirectUrl },

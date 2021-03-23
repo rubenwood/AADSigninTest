@@ -20,13 +20,20 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
         {
             //Response.Headers.Add("Access-Control-Allow-Origin","*");
 
-            using (var reader = new StreamReader(Request.Body))
+            //using (var reader = new StreamReader(Request.Body))
+            //{
+            //    var body = reader.ReadToEnd();
+            //    //string logOutput = "<p>This is a test</p><br/><script>console.log(\"" + body + "\");</script>";
+            //    byte[] bytes = Encoding.ASCII.GetBytes(body);
+            //    ViewData["ReqBody"] = Encoding.UTF8.GetString(bytes);
+            //}
+
+            if (TempData.ContainsKey("ReqBody"))
             {
-                var body = reader.ReadToEnd();
-                string logOutput = "<p>This is a test</p><br/><script>console.log(\"" + body + "\");</script>";
-                byte[] bytes = Encoding.ASCII.GetBytes(logOutput);
-                ViewData["ReqBody"] = Encoding.UTF8.GetString(bytes);
+                string reqBodyFromTemp = TempData["LoginReqBody"] as string;
+                ViewData["ReqBody"] = reqBodyFromTemp;
             }
+
 
             ViewData["TestVar"] = "This is just a test for view data";
 
