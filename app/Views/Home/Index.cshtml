@@ -18,16 +18,16 @@
     function redirect() {
       //http get
         var httpClient = function() {
-        this.get = function(aUrl, aCallback) {
-            var anHttpRequest = new XMLHttpRequest();
-            anHttpRequest.onreadystatechange = function() { 
-                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                    aCallback(anHttpRequest.responseText);
-            }
+            this.get = function(aUrl, aCallback) {
+                var anHttpRequest = new XMLHttpRequest();
+                anHttpRequest.onreadystatechange = function() { 
+                    if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                        aCallback(anHttpRequest.responseText);
+                }
 
-            anHttpRequest.open("POST", aUrl, true );            
-            anHttpRequest.send( null );
-            }
+                anHttpRequest.open("POST", aUrl, true );            
+                anHttpRequest.send( null );
+             }
         }
 
         document.getElementById("test2").innerHTML = "Working...";
@@ -47,8 +47,7 @@
             document.getelementbyid("test2").innerhtml = "worked!";
         
             //location.replace("immersifyeducation://immersifydental?idtoken=eyj0exaioijkv1qilcjhbgcioijsuzi1niisimtpzci6ijfmve16ywtpaglsbgffohoyqkvkvlhlv01xbyj9.eyj2zxiioiiyljailcjpc3mioijodhrwczovl2xvz2lulm1py3jvc29mdg9ubgluzs5jb20voteymja0mgqtnmm2ny00yzvilwixmtitmzzhmza0yjy2zgfkl3yyljailcjzdwiioijbqufbqufbqufbqufbqufbqufbqufja3pxrlzyu2ftyuzietc4mmjidgfriiwiyxvkijoinmnimdqwmtgtytnmns00nme3lwi5otutotqwyzc4zjvhzwyziiwizxhwijoxntm2mzyxndexlcjpyxqioje1mzyynzq3mtesim5izii6mtuznji3ndcxmswibmftzsi6ikfizsbmaw5jb2xuiiwichjlzmvycmvkx3vzzxjuyw1lijoiqwjltglabwljcm9zb2z0lmnvbsisim9pzci6ijawmdawmdawltawmdatmdawmc02nmyzltmzmzjly2e3zwe4msisinrpzci6ijkxmjiwndbkltzjnjctngm1yi1imteyltm2ytmwngi2nmrhzcisim5vbmnlijoimtizntiziiwiywlvijoirgyyvvzytdfpecfstunxtvnpskjjrmf0emnhznzgr2hqs3y4ctvnmhg3mzjkujvnqjvcaxn2r1fpn1lxqnlqzdhpuurmcsflr2jjrgfrexa1bw5pcmnkcuhlwvnubhrlcfftuna2qulaogpzin0.1afww-ck5nrowslltm7gzzvdwukqvhsqpm55tqsmvo9y59clhrxpvb8n-55hcr9z6g_31_ubeukoz612i2j_sm9ffshsddjoalqr54cregijvjtms3ekk9a7sjbbcpl1mputlfygow39tfjy7evnw9plwuvrrtgvk7lylprvfzw-ciqw3ghc-t7ik_m_xkr08inerbtaecwhten4chpc4w3jdmw_lixzc48yoq0db1l9-imx98egypfrlbm0ibl5spfzl6jdzirrjou8vecjvj1mq-iuhgt0macxx8jdxylp-kuu2d9mbnkpckjuz7p8gwtl5b7nludh_dmsvipwrw");
-        });
-        
+        });        
     }
 
     window.onload = redirect;
