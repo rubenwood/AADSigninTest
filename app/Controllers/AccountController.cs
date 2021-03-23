@@ -25,6 +25,14 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
                 TempData["LoginReqBody"] = Encoding.UTF8.GetString(bytes);
             }
 
+            using (var reader = new StreamReader(Response.Body))
+            {
+                var body = reader.ReadToEnd();
+                //string logOutput = "<p>This is a test</p><br/><script>console.log(\"" + body + "\");</script>";
+                byte[] bytes = Encoding.ASCII.GetBytes(body);
+                TempData["LoginRespBody"] = Encoding.UTF8.GetString(bytes);
+            }
+
             var redirectUrl = Url.Action(nameof(HomeController.Index), "Home");
             return Challenge(
                 new AuthenticationProperties { RedirectUri = redirectUrl },

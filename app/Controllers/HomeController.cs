@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -34,6 +35,11 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
                 ViewData["ReqBody"] = reqBodyFromTemp;
             }
 
+            if (TempData.ContainsKey("RespBody"))
+            {
+                string reqBodyFromTemp = TempData["LoginRespBody"] as string;
+                ViewData["RespBody"] = reqBodyFromTemp;
+            }
 
             ViewData["TestVar"] = "This is just a test for view data";
 
