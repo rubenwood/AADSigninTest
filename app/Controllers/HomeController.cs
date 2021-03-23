@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -17,10 +18,15 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
         public IActionResult Index()
         {
             Response.Headers.Add("Access-Control-Allow-Origin","*");
-            string resp = Request.Body.ToString();
-            string logOutput = "<script>console.log(" + resp + ");</script>";
-            byte[] bytes = Encoding.ASCII.GetBytes(logOutput);
-            Response.Body.Write(bytes);
+
+            using (var reader = new StreamReader(Request.Body))
+            {
+                var body = reader.ReadToEnd();
+                string logOutput = "<script>console.log(\"" + body + "\");</script>";
+                byte[] bytes = Encoding.ASCII.GetBytes(logOutput);
+                Response.Body.Write(bytes);
+            }            
+            
             return View();
         }
 
