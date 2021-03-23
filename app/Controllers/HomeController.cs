@@ -29,6 +29,7 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
             //    ViewData["ReqBody"] = Encoding.UTF8.GetString(bytes);
             //}
 
+           
 
             if (TempData.ContainsKey("ReqBody"))
             {
@@ -43,6 +44,8 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
             }
 
             ViewData["TestVar"] = "This is just a test for view data";
+            string idToken = Request.Form["id_token"];
+            ViewData["IDToken"] = idToken;
 
             return View();
         }
