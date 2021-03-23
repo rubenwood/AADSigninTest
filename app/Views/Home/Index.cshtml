@@ -1,12 +1,11 @@
-﻿@{ 
-    ViewData["Title"] = "Home Page";
-    var testVar = "This is a test!";
-    var testReqBody = Context.Request.Body;
-    var testRespBody = Context.Response.Body;
+﻿@{ ViewData["Title"] = "Home Page";
+                var testVar = "This is a test!";
+                // not sure about these
+                //var testReqBody = Context.Request.Body;
+                //var testRespBody = Context.Response.Body;
 
-    var testFromViewData1 = ViewData["TestVar"]; 
-    var testFromViewData2 = ViewData["ReqBody"];
-}
+                var testFromViewData1 = ViewData["TestVar"];
+                var testFromViewData2 = ViewData["ReqBody"]; }
 
 <br />
 <br />
@@ -85,9 +84,6 @@
 <br />
 <p>@testVar</p>
 <br />
-<p>@testReqBody</p>
-<br />
-<p>@testRespBody</p>
 <br />
 <p>@testFromViewData1</p>
 <br />

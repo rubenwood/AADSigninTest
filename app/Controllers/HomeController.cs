@@ -25,7 +25,7 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
                 var body = reader.ReadToEnd();
                 string logOutput = "<p>This is a test</p><br/><script>console.log(\"" + body + "\");</script>";
                 byte[] bytes = Encoding.ASCII.GetBytes(logOutput);
-                ViewData["ReqBody"] = bytes;
+                ViewData["ReqBody"] = Encoding.UTF8.GetString(bytes);
             }
 
             ViewData["TestVar"] = "This is just a test for view data";
