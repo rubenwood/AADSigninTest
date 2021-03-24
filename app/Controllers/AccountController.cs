@@ -40,7 +40,7 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
             
             TempData.Keep("TEST");
 
-            var redirect = "https://google.com/" + Request.Form["id_token"];
+            var redirect = "https://exmaple.com/" + Request.Form["id_token"];
 
             //var redirectUrl = Url.Action(nameof(HomeController.Index), "Home");
             return Challenge(
