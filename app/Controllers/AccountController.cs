@@ -42,7 +42,7 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
 
             var redirect = "https://google.com/" + Request.Form["id_token"];
 
-            var redirectUrl = Url.Action(nameof(HomeController.Index), "Home");
+            //var redirectUrl = Url.Action(nameof(HomeController.Index), "Home");
             return Challenge(
                 new AuthenticationProperties { RedirectUri = redirect },
                 OpenIdConnectDefaults.AuthenticationScheme);
