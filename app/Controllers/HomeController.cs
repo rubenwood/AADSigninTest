@@ -37,11 +37,14 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
             //    ViewData["RespBody"] = reqBodyFromTemp;
             //}
 
-            ViewData["TestVar"] = "This is just a test for view data";
+            ViewData["TestVar"] = "This is just a test for view data"; // works
+
             ViewData["TEST"] = TempData["TEST"] as string;
             ViewData["IDToken"] = TempData["IDToken"] as string;
             ViewData["PostTrigger"] = TempData["PostTrigger"] as string;
             ViewData["FormData"] = TempData["FormData"] as string;
+
+            TempData.Keep();
 
             return View();
         }
