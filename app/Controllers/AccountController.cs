@@ -36,6 +36,8 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
             TempData["TEST"] = "Test from Sign in action";
 
             TempData["IDToken"] = Request.Form["id_token"];
+
+            TempData.Keep();
             
             var redirectUrl = Url.Action(nameof(HomeController.Index), "Home");
             return Challenge(
