@@ -14,7 +14,9 @@
     //var postReqData1 = Context.Request.Form["id_token"];
     //var postReqData2 = Context.Request.QueryString.Value;
     //var postReqData3 = Context.Request.Headers["Content-Type"];
-    var idToken1 = ViewData["IDToken"]; }
+    var idToken1 = ViewData["IDToken"];
+
+    var testTempData = TempData["TEST"]; }
 
 <br />
 <br />
@@ -65,3 +67,6 @@
 <br />
 <br />
 <p>@testFromSignIn</p>
+<br />
+<br />
+<p>@testTempData</p>
