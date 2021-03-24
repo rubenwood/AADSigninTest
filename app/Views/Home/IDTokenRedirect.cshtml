@@ -11,3 +11,13 @@
 <br />
 <br />
 <p>END OF TOKEN</p>
+
+<script>    
+    var appURL = "immersifyeducation://immersifydental?idToken=" + @idToken;
+    console.log("ID TOKEN: " + @idToken);
+    console.log("----");
+    console.log("APP URL: " + appURL);
+
+    // redirect to deeplink
+    document.location = appURL;
+</script>

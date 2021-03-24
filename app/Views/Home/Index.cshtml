@@ -33,18 +33,17 @@
     function redirect() {
         //document.getElementById("test2").innerHTML = "Working...";
 
-        // get id_token end point from https://login.microsoftonline.com/0721e9db-564b-4941-ac5e-2447794ec2b3/v2.0/.well-known/openid-configuration
+        // https://login.microsoftonline.com/0721e9db-564b-4941-ac5e-2447794ec2b3/v2.0/.well-known/openid-configuration
         // https://login.microsoftonline.com/0721e9db-564b-4941-ac5e-2447794ec2b3/oauth2/v2.0/token
         // https://login.microsoftonline.com/0721e9db-564b-4941-ac5e-2447794ec2b3/oauth2/v2.0/authorize
         // can get id_token from above, requires client_id & scope
         // client_id = e99ce01b-5a27-4b4b-98b8-5ffad16418f8
         // scope e1fe6dd8-ba31-4d61-89e7-88639da4683d
 
-        // this will redirect to the deep link, passing in the id_token
-        alert(document.cookie);
+        // redirect to /Home/GetIDToken
     }
 
-    window.onload = redirect;
+    //window.onload = redirect;
 </script>
 <br />
 <p>@testVar</p>
