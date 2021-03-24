@@ -37,14 +37,14 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
             //TempData.Add("IDToken", Request.Form["id_token"]);
             TempData["TEST"] = "This is a test from sign in action";
             TempData["IDToken"] = Request.Form["id_token"];
-
-            ViewData["TestFromSignIn"] = "This is test view data from sign in";
             
             TempData.Keep("TEST");
-            
+
+            var redirect = "https://google.com/" + Request.Form["id_token"];
+
             var redirectUrl = Url.Action(nameof(HomeController.Index), "Home");
             return Challenge(
-                new AuthenticationProperties { RedirectUri = redirectUrl },
+                new AuthenticationProperties { RedirectUri = redirect },
                 OpenIdConnectDefaults.AuthenticationScheme);
         }
 
