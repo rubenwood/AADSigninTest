@@ -37,6 +37,8 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
             //TempData.Add("IDToken", Request.Form["id_token"]);
             TempData["TEST"] = "This is a test from sign in action";
             TempData["IDToken"] = Request.Form["id_token"];
+
+            ViewData["TestFromSignIn"] = "This is test view data from sign in";
             
             TempData.Keep("TEST");
             

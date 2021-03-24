@@ -17,10 +17,13 @@
     //var postReqData3 = Context.Request.Headers["Content-Type"];
     var idToken1 = ViewData["IDToken"];
 
-    var testTempData = TempData["TEST"]; 
+    var testTempData = TempData["TEST"];
+
+    var testFromSignIn2 = ViewData["TestFromSignIn"];
+
+    //Context.Request
     
 }
-
 <br />
 <br />
 <br />
@@ -29,11 +32,9 @@
 </p>
 <br />
 <br />
-<br />
 <p>
     <button onclick="redirect()">Nothing happening? Click here!</button>
 </p>
-
 <script>
     function redirect() {
         //document.getElementById("test2").innerHTML = "Working...";
@@ -74,3 +75,6 @@
 <br />
 <br />
 <p>@testTempData</p>
+<br />
+<br />
+<p>@testFromSignIn2</p>
