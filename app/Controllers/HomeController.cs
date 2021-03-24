@@ -61,8 +61,9 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", idToken);
             var content = await client.GetStringAsync("https://login.microsoftonline.com/0721e9db-564b-4941-ac5e-2447794ec2b3/oauth2/v2.0/authorize");
 
-            ViewData["GotIDToken"] = JArray.Parse(content).ToString();
-            ViewBag.Json = JArray.Parse(content).ToString();
+            ViewData["TestIDToken"] = idToken;
+            //ViewData["GotIDToken"] = JArray.Parse(content).ToString();
+            //ViewBag.Json = JArray.Parse(content).ToString();
             return View("json");
         }
 
