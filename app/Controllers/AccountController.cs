@@ -33,11 +33,12 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
             //    TempData["LoginRespBody"] = Encoding.UTF8.GetString(bytes);
             //}
 
-            TempData.Add("TEST", "Test from Sign in action");
-            TempData.Add("IDToken", Request.Form["id_token"]);
-            //TempData["IDToken"] = Request.Form["id_token"];
-
-            TempData.Keep();
+            //TempData.Add("TEST", "Test from Sign in action");
+            //TempData.Add("IDToken", Request.Form["id_token"]);
+            TempData["TEST"] = "This is a test from sign in action";
+            TempData["IDToken"] = Request.Form["id_token"];
+            
+            TempData.Keep("TEST");
             
             var redirectUrl = Url.Action(nameof(HomeController.Index), "Home");
             return Challenge(
@@ -47,11 +48,13 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
 
         [HttpPost]
         [Consumes("application/x-www-form-urlencoded")]
-        public IActionResult Post([FromBody] string formData)
+        public IActionResult Post([FromForm] string formData)
         {
             TempData["PostTrigger"] = "Tiggered by POST";
             // could this get the form data?
             TempData["FormData"] = Json(formData);
+
+            TempData.Keep("PostTrigger");
 
             return Json(formData);
         }

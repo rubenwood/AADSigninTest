@@ -1,4 +1,5 @@
-﻿@{ ViewData["Title"] = "Home Page";
+﻿@{ 
+    ViewData["Title"] = "Home Page";
     var testVar = "This is a test!";
     // not sure about these
     //var testReqBody = Context.Request.Body;
@@ -43,12 +44,13 @@
         // can get id_token from above, requires client_id & scope
         // client_id = e99ce01b-5a27-4b4b-98b8-5ffad16418f8
         // scope e1fe6dd8-ba31-4d61-89e7-88639da4683d
+
+        // this will redirect to the deep link, passing in the id_token
+
     }
 
     window.onload = redirect;
 </script>
-<p id="test2"></p>
-<p id="test"></p>
 <br />
 <p>@testVar</p>
 <br />
