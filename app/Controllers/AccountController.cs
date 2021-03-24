@@ -35,7 +35,7 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
 
             TempData["IDToken"] = Request.Form["id_token"];
             
-            var redirectUrl = Url.Action(nameof(HomeController.Index), "Home");
+            var redirectUrl = Url.Action(nameof(HomeController.Index), "Home", new { test="This is a test for URL Redirect Params" });
             return Challenge(
                 new AuthenticationProperties { RedirectUri = redirectUrl },
                 OpenIdConnectDefaults.AuthenticationScheme);
