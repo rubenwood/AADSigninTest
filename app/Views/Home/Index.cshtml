@@ -11,7 +11,7 @@
     //var postReqData1 = Context.Request.Form["id_token"];
     var postReqData2 = Context.Request.QueryString.Value;
     var postReqData3 = Context.Request.Headers["id_token"];
-    var idToken1 = ViewData["IDToken"];
+    //var idToken1 = ViewData["IDToken"];
 }
 
 <br />
@@ -82,6 +82,10 @@
         //fetch('https://login.microsoftonline.com/0721e9db-564b-4941-ac5e-2447794ec2b3/oauth2/v2.0/authorize')
         //    .then(response => response.json())
         //    .then(data => console.log(data));
+
+
+        var idToken = FormData.get("id_token");
+        console.log(idToken);
     }
 
     window.onload = redirect;
@@ -96,9 +100,6 @@
 <p>@testFromViewData2</p>
 <br />
 <p>@testFromViewData3</p>
-<br />
-<br />
-<p>@idToken1</p>
 <br />
 <br />
 <p>@postReqData2</p>

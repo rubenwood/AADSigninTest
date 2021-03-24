@@ -43,8 +43,8 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
 
             ViewData["TestVar"] = "This is just a test for view data";
 
-            string idToken = Request.Form["id_token"];
-            ViewData["IDToken"] = idToken;
+            //string idToken = Request.Form["id_token"];
+            //ViewData["IDToken"] = idToken;
 
             return View();
         }
