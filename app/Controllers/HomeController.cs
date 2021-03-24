@@ -51,20 +51,19 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
             return View();
         }
 
-        public async Task<IActionResult> getIDToken()
+        public async Task<IActionResult> GetIDToken()
         {
-            // /Home/json
+            // /Home/GetIDToken
 
-            string idToken = await HttpContext.GetTokenAsync("id_token");
+            string idToken = await HttpContext.GetTokenAsync("id_token"); // this returns the id token
 
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", idToken);
-            var content = await client.GetStringAsync("https://login.microsoftonline.com/0721e9db-564b-4941-ac5e-2447794ec2b3/oauth2/v2.0/authorize");
+            //var client = new HttpClient();
+            //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", idToken);
+            //var content = await client.GetStringAsync("https://login.microsoftonline.com/0721e9db-564b-4941-ac5e-2447794ec2b3/oauth2/v2.0/authorize");
 
-            ViewData["TestIDToken"] = idToken;
-            //ViewData["GotIDToken"] = JArray.Parse(content).ToString();
-            //ViewBag.Json = JArray.Parse(content).ToString();
-            return View("json");
+            ViewData["IDToken"] = idToken;
+
+            return View("IDTokenRedirect");
         }
 
         public IActionResult About()
