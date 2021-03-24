@@ -11,9 +11,9 @@
     var formDataTest = ViewData["FormData"];
 
     //var postReqData1 = Context.Request.Form["id_token"];
-    var postReqData2 = Context.Request.QueryString.Value;
-    var postReqData3 = Context.Request.Headers["Content-Type"];
-    //var idToken1 = ViewData["IDToken"];
+    //var postReqData2 = Context.Request.QueryString.Value;
+    //var postReqData3 = Context.Request.Headers["Content-Type"];
+    var idToken1 = ViewData["IDToken"];
 }
 
 <br />
@@ -105,10 +105,7 @@
 <p>@testFromViewData3</p>
 <br />
 <br />
-<p>@postReqData2</p>
-<br />
-<br />
-<p>@postReqData3</p>
+<p>@idToken1</p>
 <br />
 <br />
 <p>@postTrigger</p>

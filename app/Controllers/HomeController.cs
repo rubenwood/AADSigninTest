@@ -29,35 +29,38 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
             //    ViewData["ReqBody"] = Encoding.UTF8.GetString(bytes);
             //}           
 
-            if (TempData.ContainsKey("ReqBody"))
-            {
-                string reqBodyFromTemp = TempData["LoginReqBody"] as string;
-                ViewData["ReqBody"] = reqBodyFromTemp;
-            }
+            //if (TempData.ContainsKey("ReqBody"))
+            //{
+            //    string reqBodyFromTemp = TempData["LoginReqBody"] as string;
+            //    ViewData["ReqBody"] = reqBodyFromTemp;
+            //}
 
-            if (TempData.ContainsKey("RespBody"))
-            {
-                string reqBodyFromTemp = TempData["LoginRespBody"] as string;
-                ViewData["RespBody"] = reqBodyFromTemp;
-            }
+            //if (TempData.ContainsKey("RespBody"))
+            //{
+            //    string reqBodyFromTemp = TempData["LoginRespBody"] as string;
+            //    ViewData["RespBody"] = reqBodyFromTemp;
+            //}
 
             ViewData["TestVar"] = "This is just a test for view data";
 
-            //string idToken = Request.Form["id_token"];
-            //ViewData["IDToken"] = idToken;
+            string idToken = TempData["IDToken"] as string;
+            ViewData["IDToken"] = idToken;
+            ViewData["PostTrigger"] = TempData["PostTrigger"] as string;
+            ViewData["FormData"] = TempData["FormData"] as string;
+
             return View();
         }
 
-        [HttpPost]
-        [Consumes("application/x-www-form-urlencoded")]
-        public IActionResult Post([FromForm] string formData)
-        {
-            ViewData["PostTrigger"] = "Tiggered by POST";
-            // could this get the form data?
-            ViewData["FormData"] = Json(formData);
+        //[HttpPost]
+        //[Consumes("application/x-www-form-urlencoded")]
+        //public IActionResult Post([FromForm] string formData)
+        //{
+        //    ViewData["PostTrigger"] = "Tiggered by POST";
+        //    // could this get the form data?
+        //    ViewData["FormData"] = Json(formData);
 
-            return Json(formData);
-        }
+        //    return Json(formData);
+        //}
 
         public IActionResult About()
         {

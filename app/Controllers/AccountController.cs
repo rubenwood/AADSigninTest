@@ -35,10 +35,26 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
                 TempData["LoginRespBody"] = Encoding.UTF8.GetString(bytes);
             }
 
+
+            TempData["IDToken"] = Request.Form["id_token"];
+            //ViewData["TestIDToken"] = Request.Form["id_token"];
+
+
             var redirectUrl = Url.Action(nameof(HomeController.Index), "Home");
             return Challenge(
                 new AuthenticationProperties { RedirectUri = redirectUrl },
                 OpenIdConnectDefaults.AuthenticationScheme);
+        }
+
+        [HttpPost]
+        [Consumes("application/x-www-form-urlencoded")]
+        public IActionResult Post([FromForm] string formData)
+        {
+            TempData["PostTrigger"] = "Tiggered by POST";
+            // could this get the form data?
+            TempData["FormData"] = Json(formData);
+
+            return Json(formData);
         }
 
         [HttpGet]
