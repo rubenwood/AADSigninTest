@@ -16,7 +16,6 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        public string myServerSideVar = "Just testing server side vars!";
         public IActionResult Index()
         {
             //Response.Headers.Add("Access-Control-Allow-Origin","*");
@@ -29,11 +28,10 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
             //    ViewData["ReqBody"] = Encoding.UTF8.GetString(bytes);
             //}           
 
-            //if (TempData.ContainsKey("ReqBody"))
-            //{
-            //    string reqBodyFromTemp = TempData["LoginReqBody"] as string;
-            //    ViewData["ReqBody"] = reqBodyFromTemp;
-            //}
+            if (TempData.ContainsKey("ReqBody"))
+            {
+                ViewData["ReqBody"] = TempData["LoginReqBody"] as string;
+            }
 
             //if (TempData.ContainsKey("RespBody"))
             //{
@@ -43,8 +41,7 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
 
             ViewData["TestVar"] = "This is just a test for view data";
 
-            string idToken = TempData["IDToken"] as string;
-            ViewData["IDToken"] = idToken;
+            ViewData["IDToken"] = TempData["IDToken"] as string;
             ViewData["PostTrigger"] = TempData["PostTrigger"] as string;
             ViewData["FormData"] = TempData["FormData"] as string;
 

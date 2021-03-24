@@ -21,7 +21,6 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
             using (var reader = new StreamReader(Request.Body))
             {
                 var body = reader.ReadToEnd();
-                //string logOutput = "<p>This is a test</p><br/><script>console.log(\"" + body + "\");</script>";
                 byte[] bytes = Encoding.ASCII.GetBytes(body);
                 TempData["LoginReqBody"] = Encoding.UTF8.GetString(bytes);
             }
@@ -30,16 +29,12 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
             using (var reader = new StreamReader(Response.Body))
             {
                 var body = reader.ReadToEnd();
-                //string logOutput = "<p>This is a test</p><br/><script>console.log(\"" + body + "\");</script>";
                 byte[] bytes = Encoding.ASCII.GetBytes(body);
                 TempData["LoginRespBody"] = Encoding.UTF8.GetString(bytes);
             }
 
-
             TempData["IDToken"] = Request.Form["id_token"];
-            //ViewData["TestIDToken"] = Request.Form["id_token"];
-
-
+            
             var redirectUrl = Url.Action(nameof(HomeController.Index), "Home");
             return Challenge(
                 new AuthenticationProperties { RedirectUri = redirectUrl },
@@ -48,7 +43,7 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
 
         [HttpPost]
         [Consumes("application/x-www-form-urlencoded")]
-        public IActionResult Post([FromForm] string formData)
+        public IActionResult Post([FromBody] string formData)
         {
             TempData["PostTrigger"] = "Tiggered by POST";
             // could this get the form data?
