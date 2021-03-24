@@ -44,8 +44,6 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
             ViewData["PostTrigger"] = TempData["PostTrigger"] as string;
             ViewData["FormData"] = TempData["FormData"] as string;
 
-            TempData.Keep();
-
             return View();
         }
 

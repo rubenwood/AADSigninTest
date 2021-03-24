@@ -33,9 +33,9 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
             //    TempData["LoginRespBody"] = Encoding.UTF8.GetString(bytes);
             //}
 
-            TempData["TEST"] = "Test from Sign in action";
-
-            TempData["IDToken"] = Request.Form["id_token"];
+            TempData.Add("TEST", "Test from Sign in action");
+            TempData.Add("IDToken", Request.Form["id_token"]);
+            //TempData["IDToken"] = Request.Form["id_token"];
 
             TempData.Keep();
             
