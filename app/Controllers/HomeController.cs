@@ -45,8 +45,17 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
 
             //string idToken = Request.Form["id_token"];
             //ViewData["IDToken"] = idToken;
-
             return View();
+        }
+
+        [HttpPost]
+        [Consumes("application/x-www-form-urlencoded")]
+        public IActionResult Post([FromBody] string formData)
+        {
+            // could this get the form data?
+            ViewData["FormData"] = formData;
+
+            return Json(formData);
         }
 
         public IActionResult About()

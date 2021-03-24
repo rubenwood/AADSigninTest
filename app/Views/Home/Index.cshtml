@@ -7,12 +7,12 @@
     var testFromViewData1 = ViewData["TestVar"];
     var testFromViewData2 = ViewData["ReqBody"];
     var testFromViewData3 = ViewData["RespBody"];
+    var formDataTest = ViewData["FormData"];
 
     //var postReqData1 = Context.Request.Form["id_token"];
     var postReqData2 = Context.Request.QueryString.Value;
     var postReqData3 = Context.Request.Headers["id_token"];
-    //var idToken1 = ViewData["IDToken"];
-}
+    //var idToken1 = ViewData["IDToken"]; }
 
 <br />
 <br />
@@ -83,8 +83,8 @@
         //    .then(response => response.json())
         //    .then(data => console.log(data));
 
-
-        var idToken = FormData.get("id_token");
+        var formData = new FormData();
+        var idToken = formData.get("id_token");
         console.log(idToken);
     }
 
@@ -106,3 +106,6 @@
 <br />
 <br />
 <p>@postReqData3</p>
+<br />
+<br />
+<p>@formDataTest</p>
