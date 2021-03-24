@@ -5,10 +5,13 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using WebApp_OpenIDConnect_DotNet.Models;
 
 namespace WebApp_OpenIDConnect_DotNet.Controllers
@@ -46,6 +49,21 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
             
 
             return View();
+        }
+
+        public async Task<IActionResult> getIDToken()
+        {
+            // /Home/json
+
+            string idToken = await HttpContext.GetTokenAsync("id_token");
+
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", idToken);
+            var content = await client.GetStringAsync("https://login.microsoftonline.com/0721e9db-564b-4941-ac5e-2447794ec2b3/oauth2/v2.0/authorize");
+
+            ViewData["GotIDToken"] = JArray.Parse(content).ToString();
+            ViewBag.Json = JArray.Parse(content).ToString();
+            return View("json");
         }
 
         public IActionResult About()
