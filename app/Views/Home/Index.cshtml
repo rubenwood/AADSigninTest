@@ -7,6 +7,7 @@
     var testFromViewData1 = ViewData["TestVar"];
     var testFromViewData2 = ViewData["ReqBody"];
     var testFromViewData3 = ViewData["RespBody"];
+    var postTrigger = ViewData["PostTrigger"];
     var formDataTest = ViewData["FormData"];
 
     //var postReqData1 = Context.Request.Form["id_token"];
@@ -84,9 +85,10 @@
         //    .then(response => response.json())
         //    .then(data => console.log(data));
 
-        var formData = new FormData();
-        var idToken = formData.get("id_token");
-        console.log(idToken);
+        // not needed
+        //var formData = new FormData();
+        //var idToken = formData.get("id_token");
+        //console.log(idToken);
     }
 
     window.onload = redirect;
@@ -107,6 +109,9 @@
 <br />
 <br />
 <p>@postReqData3</p>
+<br />
+<br />
+<p>@postTrigger</p>
 <br />
 <br />
 <p>@formDataTest</p>

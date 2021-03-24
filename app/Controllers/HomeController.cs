@@ -50,8 +50,9 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
 
         [HttpPost]
         [Consumes("application/x-www-form-urlencoded")]
-        public IActionResult Post([FromBody] string formData)
+        public IActionResult Post([FromForm] string formData)
         {
+            ViewData["PostTrigger"] = "Tiggered by POST";
             // could this get the form data?
             ViewData["FormData"] = Json(formData);
 
