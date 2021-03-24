@@ -18,24 +18,26 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
         public IActionResult SignIn()
         {
             // get request body?
-            using (var reader = new StreamReader(Request.Body))
-            {
-                var body = reader.ReadToEnd();
-                byte[] bytes = Encoding.ASCII.GetBytes(body);
-                TempData["LoginReqBody"] = Encoding.UTF8.GetString(bytes);
-            }
+            //using (var reader = new StreamReader(Request.Body))
+            //{
+            //    var body = reader.ReadToEnd();
+            //    byte[] bytes = Encoding.ASCII.GetBytes(body);
+            //    TempData["LoginReqBody"] = Encoding.UTF8.GetString(bytes);
+            //}
 
             // get response body?
-            using (var reader = new StreamReader(Response.Body))
-            {
-                var body = reader.ReadToEnd();
-                byte[] bytes = Encoding.ASCII.GetBytes(body);
-                TempData["LoginRespBody"] = Encoding.UTF8.GetString(bytes);
-            }
+            //using (var reader = new StreamReader(Response.Body))
+            //{
+            //    var body = reader.ReadToEnd();
+            //    byte[] bytes = Encoding.ASCII.GetBytes(body);
+            //    TempData["LoginRespBody"] = Encoding.UTF8.GetString(bytes);
+            //}
+
+            TempData["TEST"] = "Test from Sign in action";
 
             TempData["IDToken"] = Request.Form["id_token"];
             
-            var redirectUrl = Url.Action(nameof(HomeController.Index), "Home", new { test="This is a test for URL Redirect Params" });
+            var redirectUrl = Url.Action(nameof(HomeController.Index), "Home");
             return Challenge(
                 new AuthenticationProperties { RedirectUri = redirectUrl },
                 OpenIdConnectDefaults.AuthenticationScheme);

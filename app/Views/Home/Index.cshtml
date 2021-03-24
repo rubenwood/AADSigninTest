@@ -5,6 +5,7 @@
     //var testRespBody = Context.Response.Body;
 
     var testFromViewData1 = ViewData["TestVar"];
+    var testFromSignIn = ViewData["TEST"];
     var testFromViewData2 = ViewData["ReqBody"];
     var testFromViewData3 = ViewData["RespBody"];
     var postTrigger = ViewData["PostTrigger"];
@@ -13,8 +14,7 @@
     //var postReqData1 = Context.Request.Form["id_token"];
     //var postReqData2 = Context.Request.QueryString.Value;
     //var postReqData3 = Context.Request.Headers["Content-Type"];
-    var idToken1 = ViewData["IDToken"];
-}
+    var idToken1 = ViewData["IDToken"]; }
 
 <br />
 <br />
@@ -45,7 +45,7 @@
         //     }
         //}
 
-        document.getElementById("test2").innerHTML = "Working...";
+        //document.getElementById("test2").innerHTML = "Working...";
 
         // get id_token end point from https://login.microsoftonline.com/0721e9db-564b-4941-ac5e-2447794ec2b3/v2.0/.well-known/openid-configuration
         // https://login.microsoftonline.com/0721e9db-564b-4941-ac5e-2447794ec2b3/oauth2/v2.0/token
@@ -112,3 +112,6 @@
 <br />
 <br />
 <p>@formDataTest</p>
+<br />
+<br />
+<p>@testFromSignIn</p>

@@ -18,8 +18,6 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
     {
         public IActionResult Index()
         {
-            //Response.Headers.Add("Access-Control-Allow-Origin","*");
-
             //using (var reader = new StreamReader(Request.Body))
             //{
             //    var body = reader.ReadToEnd();
@@ -40,24 +38,13 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
             //}
 
             ViewData["TestVar"] = "This is just a test for view data";
-
+            ViewData["TEST"] = TempData["TEST"] as string;
             ViewData["IDToken"] = TempData["IDToken"] as string;
             ViewData["PostTrigger"] = TempData["PostTrigger"] as string;
             ViewData["FormData"] = TempData["FormData"] as string;
 
             return View();
         }
-
-        //[HttpPost]
-        //[Consumes("application/x-www-form-urlencoded")]
-        //public IActionResult Post([FromForm] string formData)
-        //{
-        //    ViewData["PostTrigger"] = "Tiggered by POST";
-        //    // could this get the form data?
-        //    ViewData["FormData"] = Json(formData);
-
-        //    return Json(formData);
-        //}
 
         public IActionResult About()
         {
