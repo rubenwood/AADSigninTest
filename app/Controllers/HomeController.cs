@@ -53,7 +53,7 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
         public IActionResult Post([FromBody] string formData)
         {
             // could this get the form data?
-            ViewData["FormData"] = formData;
+            ViewData["FormData"] = Json(formData);
 
             return Json(formData);
         }
