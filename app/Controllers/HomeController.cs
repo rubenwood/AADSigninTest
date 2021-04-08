@@ -53,13 +53,9 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
 
         public async Task<IActionResult> GetIDToken()
         {
-            // /Home/GetIDToken
+            // URL: /Home/GetIDToken
 
             string idToken = await HttpContext.GetTokenAsync("id_token"); // this returns the id token
-
-            //var client = new HttpClient();
-            //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", idToken);
-            //var content = await client.GetStringAsync("https://login.microsoftonline.com/0721e9db-564b-4941-ac5e-2447794ec2b3/oauth2/v2.0/authorize");
 
             ViewData["IDToken"] = idToken;
 

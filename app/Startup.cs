@@ -67,6 +67,7 @@ namespace WebApp_OpenIDConnect_DotNet
                 // ValidateIssuer, above to 'true', and add the issuers you want to accept to the
                 // options.TokenValidationParameters.ValidIssuers collection
                 options.TokenValidationParameters.ValidateIssuer = false;
+                options.ProtocolValidator.RequireNonce = false;
             });
 
             services.AddMvc(options =>
