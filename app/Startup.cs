@@ -36,12 +36,6 @@ namespace WebApp_OpenIDConnect_DotNet
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            // CORS
-            //services.AddCors(c =>
-            //{
-            //    c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
-            //});
-
             services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
                 .AddAzureAD(options => Configuration.Bind("AzureAd", options));
 
@@ -68,8 +62,8 @@ namespace WebApp_OpenIDConnect_DotNet
                 // options.TokenValidationParameters.ValidIssuers collection
                 options.TokenValidationParameters.ValidateIssuer = false;
 
-                options.ProtocolValidator.RequireNonce = false;
-                options.NonceCookie.IsEssential = false;
+                //options.ProtocolValidator.RequireNonce = false;
+                //options.NonceCookie.IsEssential = false;
             });
 
             services.AddMvc(options =>
@@ -101,9 +95,6 @@ namespace WebApp_OpenIDConnect_DotNet
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
-            // CORS
-            //app.UseCors(options => options.AllowAnyOrigin());
 
             app.UseAuthentication();
 
