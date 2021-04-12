@@ -17,28 +17,10 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
         [HttpGet]
         public IActionResult SignIn()
         {
-            // get request body?
-            //using (var reader = new StreamReader(Request.Body))
-            //{
-            //    var body = reader.ReadToEnd();
-            //    byte[] bytes = Encoding.ASCII.GetBytes(body);
-            //    TempData["LoginReqBody"] = Encoding.UTF8.GetString(bytes);
-            //}
-
-            // get response body?
-            //using (var reader = new StreamReader(Response.Body))
-            //{
-            //    var body = reader.ReadToEnd();
-            //    byte[] bytes = Encoding.ASCII.GetBytes(body);
-            //    TempData["LoginRespBody"] = Encoding.UTF8.GetString(bytes);
-            //}
-
-            //TempData.Add("TEST", "Test from Sign in action");
-            //TempData.Add("IDToken", Request.Form["id_token"]);
-            TempData["TEST"] = "This is a test from sign in action";
-            TempData["IDToken"] = Request.Form["id_token"];
+            //TempData["TEST"] = "This is a test from sign in action";
+            //TempData["IDToken"] = Request.Form["id_token"];
             
-            TempData.Keep("TEST");
+            //TempData.Keep("TEST");
 
             var redirectUrl = Url.Action(nameof(HomeController.Index), "Home");
             return Challenge(

@@ -62,8 +62,8 @@ namespace WebApp_OpenIDConnect_DotNet
                 // options.TokenValidationParameters.ValidIssuers collection
                 options.TokenValidationParameters.ValidateIssuer = false;
 
-                //options.ProtocolValidator.RequireNonce = false;
-                //options.NonceCookie.IsEssential = false;
+                // maybe this will fix correlation error?
+                options.CorrelationCookie.SameSite = SameSiteMode.None;
             });
 
             services.AddMvc(options =>

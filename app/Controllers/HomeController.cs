@@ -20,33 +20,18 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
     public class HomeController : Controller
     {
         public IActionResult Index()
-        {
-            //using (var reader = new StreamReader(Request.Body))
+        {      
+            //if (TempData.ContainsKey("ReqBody"))
             //{
-            //    var body = reader.ReadToEnd();
-            //    //string logOutput = "<p>This is a test</p><br/><script>console.log(\"" + body + "\");</script>";
-            //    byte[] bytes = Encoding.ASCII.GetBytes(body);
-            //    ViewData["ReqBody"] = Encoding.UTF8.GetString(bytes);
-            //}           
-
-            if (TempData.ContainsKey("ReqBody"))
-            {
-                ViewData["ReqBody"] = TempData["LoginReqBody"] as string;
-            }
-
-            //if (TempData.ContainsKey("RespBody"))
-            //{
-            //    string reqBodyFromTemp = TempData["LoginRespBody"] as string;
-            //    ViewData["RespBody"] = reqBodyFromTemp;
+            //    ViewData["ReqBody"] = TempData["LoginReqBody"] as string;
             //}
 
-            ViewData["TestVar"] = "This is just a test for view data"; // works
+            //ViewData["TestVar"] = "This is just a test for view data"; // works
 
-            ViewData["TEST"] = TempData["TEST"] as string;
-            ViewData["IDToken"] = TempData["IDToken"] as string;
-            ViewData["PostTrigger"] = TempData["PostTrigger"] as string;
-            ViewData["FormData"] = TempData["FormData"] as string;
-            
+            //ViewData["TEST"] = TempData["TEST"] as string;
+            //ViewData["IDToken"] = TempData["IDToken"] as string;
+            //ViewData["PostTrigger"] = TempData["PostTrigger"] as string;
+            //ViewData["FormData"] = TempData["FormData"] as string;            
 
             return View();
         }

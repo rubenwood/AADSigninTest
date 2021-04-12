@@ -1,22 +1,22 @@
 ﻿@{ 
     ViewData["Title"] = "Home Page";
-    var testVar = "This is a test!";
+    
+    //var testVar = "This is a test!";
     // not sure about these
     //var testReqBody = Context.Request.Body;
     //var testRespBody = Context.Response.Body;
 
-    var testFromViewData1 = ViewData["TestVar"];
-    var testFromSignIn = ViewData["TEST"];
-    var testFromViewData2 = ViewData["ReqBody"];
-    var testFromViewData3 = ViewData["RespBody"];
-    var postTrigger = ViewData["PostTrigger"];
-    var formDataTest = ViewData["FormData"];
+    //var testFromViewData1 = ViewData["TestVar"];
+    //var testFromSignIn = ViewData["TEST"];
+    //var testFromViewData2 = ViewData["ReqBody"];
+    //var testFromViewData3 = ViewData["RespBody"];
+    //var postTrigger = ViewData["PostTrigger"];
+    //var formDataTest = ViewData["FormData"];
 
     //var postReqData1 = Context.Request.Form["id_token"];
     //var postReqData2 = Context.Request.QueryString.Value;
     //var postReqData3 = Context.Request.Headers["Content-Type"];
-    var idToken1 = ViewData["IDToken"];
-   
+    //var idToken1 = ViewData["IDToken"];
 }
 <br />
 <br />
@@ -34,35 +34,11 @@
         //document.getElementById("test2").innerHTML = "Working...";
 
         // https://login.microsoftonline.com/0721e9db-564b-4941-ac5e-2447794ec2b3/v2.0/.well-known/openid-configuration
-        // https://login.microsoftonline.com/0721e9db-564b-4941-ac5e-2447794ec2b3/oauth2/v2.0/token
         // https://login.microsoftonline.com/0721e9db-564b-4941-ac5e-2447794ec2b3/oauth2/v2.0/authorize
-        // can get id_token from above, requires client_id & scope
-        // client_id = e99ce01b-5a27-4b4b-98b8-5ffad16418f8
-        // scope e1fe6dd8-ba31-4d61-89e7-88639da4683d
-
         // redirect to /Home/GetIDToken
     }
 
-    //window.onload = redirect;
+    //redirect them to the page that gets the ID Token
     document.location = window.location.href + "/Home/GetIDToken";
 </script>
 <br />
-<p>@testVar</p>
-<br />
-<p>@testFromViewData1</p>
-<br />
-<p>@testFromViewData2</p>
-<br />
-<p>@testFromViewData3</p>
-<br />
-<br />
-<p>@idToken1</p>
-<br />
-<br />
-<p>@postTrigger</p>
-<br />
-<br />
-<p>@formDataTest</p>
-<br />
-<br />
-<p>@testFromSignIn</p>
