@@ -26,19 +26,14 @@
 </p>
 <br />
 <br />
-<p>
-    <button onclick="redirect()">Nothing happening? Click here!</button>
-</p>
 <script>
     function redirect() {
-        //document.getElementById("test2").innerHTML = "Working...";
-
         // https://login.microsoftonline.com/0721e9db-564b-4941-ac5e-2447794ec2b3/v2.0/.well-known/openid-configuration
         // https://login.microsoftonline.com/0721e9db-564b-4941-ac5e-2447794ec2b3/oauth2/v2.0/authorize
         // redirect to /Home/GetIDToken
     }
 
     //redirect them to the page that gets the ID Token
-    //document.location = window.location.href + "Home/GetIDToken";
+    document.location = window.location.href + "Home/GetIDToken";
 </script>
 <br />
