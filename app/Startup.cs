@@ -17,8 +17,6 @@ namespace WebApp_OpenIDConnect_DotNet
 {
     public class Startup
     {
-        //readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -42,7 +40,7 @@ namespace WebApp_OpenIDConnect_DotNet
             services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
             {
                 options.Authority = options.Authority + "/v2.0/";
-                options.SaveTokens = true;
+                //options.SaveTokens = true;
 
                 // Per the code below, this application signs in users in any Work and School
                 // accounts and any Microsoft Personal Accounts.
