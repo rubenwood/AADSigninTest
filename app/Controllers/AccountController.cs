@@ -17,28 +17,10 @@ namespace WebApp_OpenIDConnect_DotNet.Controllers
         [HttpGet]
         public IActionResult SignIn()
         {
-            //TempData["TEST"] = "This is a test from sign in action";
-            //TempData["IDToken"] = Request.Form["id_token"];
-            
-            //TempData.Keep("TEST");
-
             var redirectUrl = Url.Action(nameof(HomeController.Index), "Home");
             return Challenge(
                 new AuthenticationProperties { RedirectUri = redirectUrl },
                 OpenIdConnectDefaults.AuthenticationScheme);
-        }
-
-        [HttpPost]
-        [Consumes("application/x-www-form-urlencoded")]
-        public IActionResult Post([FromForm] string formData)
-        {
-            TempData["PostTrigger"] = "Tiggered by POST";
-            // could this get the form data?
-            TempData["FormData"] = Json(formData);
-
-            TempData.Keep("PostTrigger");
-
-            return Json(formData);
         }
 
         [HttpGet]

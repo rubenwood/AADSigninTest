@@ -58,12 +58,9 @@ namespace WebApp_OpenIDConnect_DotNet
 
                 // If you want to restrict the users that can sign-in to several organizations
                 // Set the tenant value in the appsettings.json file to 'organizations', set
-                // ValidateIssuer, above to 'true', and add the issuers you want to accept to the
+                // ValidateIssuer, below to 'true', and add the issuers you want to accept to the
                 // options.TokenValidationParameters.ValidIssuers collection
                 options.TokenValidationParameters.ValidateIssuer = false;
-
-                // maybe this will fix correlation error?
-                options.CorrelationCookie.SameSite = SameSiteMode.None;
             });
 
             services.AddMvc(options =>
