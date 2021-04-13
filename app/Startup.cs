@@ -69,7 +69,7 @@ namespace WebApp_OpenIDConnect_DotNet
                 // possible fix?
                 options.NonceCookie.SameSite = SameSiteMode.None;
                 options.CorrelationCookie.SameSite = SameSiteMode.None;
-                
+
                 options.Events = new OpenIdConnectEvents
                 {
                     OnRemoteFailure = ctx =>
@@ -78,7 +78,7 @@ namespace WebApp_OpenIDConnect_DotNet
                         ctx.HandleResponse();
                         return System.Threading.Tasks.Task.FromResult(0);
                     }
-                }
+                };
             });
 
             services.AddMvc(options =>
