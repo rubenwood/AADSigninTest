@@ -41,6 +41,7 @@ namespace WebApp_OpenIDConnect_DotNet
             {
                 options.Authority = options.Authority + "/v2.0/";
                 options.SaveTokens = true;
+                options.TokenValidationParameters.ValidateIssuer = false;
 
                 // Per the code below, this application signs in users in any Work and School
                 // accounts and any Microsoft Personal Accounts.
@@ -56,9 +57,9 @@ namespace WebApp_OpenIDConnect_DotNet
 
                 // If you want to restrict the users that can sign-in to several organizations
                 // Set the tenant value in the appsettings.json file to 'organizations', set
-                // ValidateIssuer, below to 'true', and add the issuers you want to accept to the
+                // ValidateIssuer, above to 'true', and add the issuers you want to accept to the
                 // options.TokenValidationParameters.ValidIssuers collection
-                options.TokenValidationParameters.ValidateIssuer = false;
+
             });
 
             services.AddMvc(options =>
@@ -98,6 +99,13 @@ namespace WebApp_OpenIDConnect_DotNet
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+            });
+
+            //possible fix?
+            app.Use((context, next) =>
+            {
+                context.Request.Scheme = "https";
+                return next();
             });
         }
     }
