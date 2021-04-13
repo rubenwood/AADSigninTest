@@ -90,7 +90,7 @@ namespace WebApp_OpenIDConnect_DotNet
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
+            //app.UseCookiePolicy();
 
             app.UseAuthentication();
 
@@ -102,11 +102,11 @@ namespace WebApp_OpenIDConnect_DotNet
             });
 
             //possible fix?
-            app.Use((context, next) =>
-            {
-                context.Request.Scheme = "https";
-                return next();
-            });
+            //app.Use((context, next) =>
+            //{
+            //    context.Request.Scheme = "https";
+            //    return next();
+            //});
         }
     }
 }
