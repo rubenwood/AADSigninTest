@@ -74,7 +74,8 @@ namespace WebApp_OpenIDConnect_DotNet
                 {
                     OnRemoteFailure = ctx =>
                     {
-                        ctx.Response.Redirect("/error?FailureMessage=" + System.Text.Encodings.Web.UrlEncoder.Default.Encode(ctx.Failure.Message));
+                        //ctx.Response.Redirect("/error?FailureMessage=" + System.Text.Encodings.Web.UrlEncoder.Default.Encode(ctx.Failure.Message));
+                        ctx.Response.Redirect("/Home/GetIDToken");
                         ctx.HandleResponse();
                         return System.Threading.Tasks.Task.FromResult(0);
                     }
