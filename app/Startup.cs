@@ -91,11 +91,21 @@ namespace WebApp_OpenIDConnect_DotNet
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseCookiePolicy(); // possible fix?
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
+
+                // possible fix?
+                var forwardedHeaderOptions = new ForwardedHeadersOptions
+                {
+                    ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedFor | Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto
+                };
+                forwardedHeaderOptions.KnownNetworks.Clear();
+                forwardedHeaderOptions.KnownProxies.Clear();
+                app.UseForwardedHeaders(forwardedHeaderOptions);
             }
 
             app.UseHttpsRedirection();
