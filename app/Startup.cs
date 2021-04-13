@@ -69,7 +69,16 @@ namespace WebApp_OpenIDConnect_DotNet
                 // possible fix?
                 options.NonceCookie.SameSite = SameSiteMode.None;
                 options.CorrelationCookie.SameSite = SameSiteMode.None;
-
+                
+                options.Events = new OpenIdConnectEvents
+                {
+                    OnRemoteFailure = ctx =>
+                    {
+                        ctx.Response.Redirect("/error?FailureMessage=" + System.Text.Encodings.Web.UrlEncoder.Default.Encode(ctx.Failure.Message));
+                        ctx.HandleResponse();
+                        return System.Threading.Tasks.Task.FromResult(0);
+                    }
+                }
             });
 
             services.AddMvc(options =>
