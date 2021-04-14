@@ -31,7 +31,7 @@ namespace WebApp_OpenIDConnect_DotNet
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
+                //options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
             // potential fix?
@@ -67,8 +67,8 @@ namespace WebApp_OpenIDConnect_DotNet
                 // options.TokenValidationParameters.ValidIssuers collection
 
                 // possible fix?
-                options.NonceCookie.SameSite = SameSiteMode.None;
-                options.CorrelationCookie.SameSite = SameSiteMode.None;
+                //options.NonceCookie.SameSite = SameSiteMode.None;
+                //options.CorrelationCookie.SameSite = SameSiteMode.None;
 
                 //options.Events = new OpenIdConnectEvents
                 //{
@@ -91,7 +91,7 @@ namespace WebApp_OpenIDConnect_DotNet
             })
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            // Add this
+            // Possible fix?
             services.ConfigureNonBreakingSameSiteCookies();
         }
 
