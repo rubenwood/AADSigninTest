@@ -27,6 +27,9 @@ namespace WebApp_OpenIDConnect_DotNet
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Possible fix?
+            services.ConfigureNonBreakingSameSiteCookies();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -89,10 +92,7 @@ namespace WebApp_OpenIDConnect_DotNet
                     .Build();
                 options.Filters.Add(new AuthorizeFilter(policy));
             })
-            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-            // Possible fix?
-            services.ConfigureNonBreakingSameSiteCookies();
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -104,7 +104,6 @@ namespace WebApp_OpenIDConnect_DotNet
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseCookiePolicy(); // possible fix?
             }
             else
             {
@@ -112,13 +111,13 @@ namespace WebApp_OpenIDConnect_DotNet
                 app.UseHsts();
 
                 // possible fix?
-                var forwardedHeaderOptions = new ForwardedHeadersOptions
-                {
-                    ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedFor | Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto
-                };
-                forwardedHeaderOptions.KnownNetworks.Clear();
-                forwardedHeaderOptions.KnownProxies.Clear();
-                app.UseForwardedHeaders(forwardedHeaderOptions);
+                //var forwardedHeaderOptions = new ForwardedHeadersOptions
+                //{
+                //    ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedFor | Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto
+                //};
+                //forwardedHeaderOptions.KnownNetworks.Clear();
+                //forwardedHeaderOptions.KnownProxies.Clear();
+                //app.UseForwardedHeaders(forwardedHeaderOptions);
             }
 
             app.UseHttpsRedirection();
