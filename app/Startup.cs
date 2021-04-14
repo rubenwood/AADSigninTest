@@ -70,16 +70,16 @@ namespace WebApp_OpenIDConnect_DotNet
                 options.NonceCookie.SameSite = SameSiteMode.None;
                 options.CorrelationCookie.SameSite = SameSiteMode.None;
 
-                options.Events = new OpenIdConnectEvents
-                {
-                    OnRemoteFailure = ctx =>
-                    {
-                        //ctx.Response.Redirect("/error?FailureMessage=" + System.Text.Encodings.Web.UrlEncoder.Default.Encode(ctx.Failure.Message));
-                        ctx.Response.Redirect("/Home/GetIDToken");
-                        ctx.HandleResponse();
-                        return System.Threading.Tasks.Task.FromResult(0);
-                    }
-                };
+                //options.Events = new OpenIdConnectEvents
+                //{
+                //    OnRemoteFailure = ctx =>
+                //    {
+                //        //ctx.Response.Redirect("/error?FailureMessage=" + System.Text.Encodings.Web.UrlEncoder.Default.Encode(ctx.Failure.Message));
+                //        ctx.Response.Redirect("/Home/GetIDToken");
+                //        ctx.HandleResponse();
+                //        return System.Threading.Tasks.Task.FromResult(0);
+                //    }
+                //};
             });
 
             services.AddMvc(options =>
@@ -90,6 +90,9 @@ namespace WebApp_OpenIDConnect_DotNet
                 options.Filters.Add(new AuthorizeFilter(policy));
             })
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            // Add this
+            services.ConfigureNonBreakingSameSiteCookies();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -120,8 +123,8 @@ namespace WebApp_OpenIDConnect_DotNet
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
 
+            app.UseCookiePolicy();
             app.UseAuthentication();
 
             app.UseMvc(routes =>
